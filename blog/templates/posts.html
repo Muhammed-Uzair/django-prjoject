@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% block title %} Posts {% endblock %} 
+{% block content %}
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+  {% for post in posts %}
+   <a href="{{post.get_absolute_url}}" class="text-decoration-none text-reset">
+    <div class="card border m-2 align-items-center">
+     <img src="{{post.image.url}}" class="card-img-top " style="width:600;height:400px;padding:10px;border-radius:30px" alt="..." /> 
+      <div class="card-body">
+        <h5 class="card-title">{{post.title |safe}}</h5>
+        <p class="card-text">{{post.content| truncatewords:10 |safe }}</p>
+        {% comment %} <h5>Author {{post.author}}</h5> {% endcomment %}
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated {{post.publish}} </small>
+      </div>
+    </div>
+  </a> 
+  {% endfor %}
+</div>
+{% endblock %}

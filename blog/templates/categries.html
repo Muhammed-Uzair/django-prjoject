@@ -1,0 +1,22 @@
+{% extends 'index.html'%}
+
+
+{% block  content %}
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+  {% for categ in category_list %}
+  <a href="category/{{categ.name}}" class="text-decoration-none text-reset">
+    <div class="card border m-2 align-items-center ">
+      <img src="{{categ.img.url}}" class="card-img-top " style="width:200px;height:200px;padding:10px;border-radius:30px" alt="..." /> 
+      <div class="card-body">
+        <h5 class="card-title">{{categ.name |title}}</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut metus pulvinar, condimentum neque imperdiet, blandit odio. Nunc et mauris.</p>
+      </div>
+      
+           
+      
+     
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endblock  %}

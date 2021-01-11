@@ -1,0 +1,64 @@
+{% extends 'index.html' %} 
+{% block title %} Welcome Blog{% endblock %} 
+{% block content %}
+<div class='row '>
+
+
+<div class="  card-deck col-md-9  col-lg-9 col-sm-12 " >
+  <div class="card  p-1 text-justify"  style='background-color:#EAF2EB;border:none'>
+ 
+  <img src='{{post.image.url}}' style="width:100%;height:500px;padding:10px;;object-fit:cover" class="card-img-top" alt="..." /> 
+    <div class="card-body">
+      <h3 class="card-title">{{post.title}}</h3>
+      <p class="card-text">{{post.content|safe}}</p>
+     {% if post.code %}
+         <code class="card-text">{{post.code|safe}}</code>
+      {% endif %}
+   
+       <img src='{{post.imag2.url}}' style="width:100%;height:500px;padding:10px;;object-fit:cover" alt="..." /> 
+      
+     
+      <h5> Author : {{post.author}}</h5>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated {{post.publish}} </small>
+    </div>
+  </div>
+</div>
+<div class="  card-deck col-md-3  col-lg-3 col-sm-12 "  style='background-color:#EAF2EB;'>
+  <div class="card  p-2 text-justify"  style='background-color:#EAF2EB;border:none'>
+    <!-- <img src="..." class="card-img-top" alt="..." /> -->
+    lorem soime text
+  </div>
+</div>
+</div>
+
+  
+
+
+
+{% comment %} <div class="col-md-12 bg-light mt-5 ">
+    {% with comments.count as total_comments %}
+    <h2 style='background-color:gray;padding:5px;color:white;padding-left:15px'>
+        <label style="background-color: gray;font-size:1.5rem" > Recent Comment{{total_comments |pluralize}}</label>
+       
+    </h2>
+    {% endwith %}
+    {% for comment in comments %}
+        <div class="pl-3">
+           by : <b class="text-bold">{{comment.name}}</b> on  <code class="bg-dark">{{comment.publish}}</code>
+           <div style="margin-left: 3rem;">{{comment.content | linebreaks }}</div>
+        </div>
+        {% empty %}
+        
+    {% endfor %} {% endcomment %}
+    {% comment %} <div style="width:80%;" class="flex align-items-center justify-content-center">
+        <h2>make new comment</h2>
+        <form method='POST' id='myform' class='' action=''>
+            {{comment_form.as_p}}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div> {% endcomment %}
+</div>
+{% endblock %}
